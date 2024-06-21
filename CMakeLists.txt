@@ -23,4 +23,18 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(service_move_right_and_stop_node src/move_right_and_stop.cpp)
+ament_target_dependencies(service_move_right_and_stop_node rclcpp std_srvs geometry_msgs)
+
+install(TARGETS
+	service_move_right_and_stop_node
+	DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY
+	launch
+	DESTINATION share/${PROJECT_NAME}
+)
+
 ament_package()
+
